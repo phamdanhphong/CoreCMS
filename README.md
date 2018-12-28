@@ -1,2 +1,0 @@
-# CoreCMS
-Core CMS
