@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuarations\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoreCMS.Data\CoreCMS.Data.csproj" />
+    <ProjectReference Include="..\CoreCMS.Infastructure\CoreCMS.Infrastructure.csproj" />
+    <ProjectReference Include="..\CoreCMS.Utilities\CoreCMS.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>
