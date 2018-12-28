@@ -18,6 +18,7 @@ namespace CoreCMS
 {
     public class Startup
     {
+        // test git
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
