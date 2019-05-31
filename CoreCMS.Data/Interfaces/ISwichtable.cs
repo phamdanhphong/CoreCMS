@@ -5,7 +5,7 @@ using CoreCMS.Data.Enums;
 
 namespace CoreCMS.Data.Interfaces
 {
-    public interface ISwichtable
+    public interface ISwitchable
     {
         Status Status { set; get; }
     }

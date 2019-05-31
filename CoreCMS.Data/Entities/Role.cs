@@ -4,18 +4,23 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using CoreCMS.Infrastructure.SharedKernel;
+using Microsoft.AspNetCore.Identity;
 
 namespace CoreCMS.Data.Entities
 {
-    [Table("Roles")]
-    public class Role : DomainEntity<int>
+    [Table("AppRoles")]
+    public class AppRole : IdentityRole<Guid>
     {
-        [StringLength(100)]
-        public string RoleName { get; set; }
-        [StringLength(300)]
-        public string RoleDescription { get; set; }
+        public AppRole() : base()
+        {
 
+        }
+        public AppRole(string name, string description) : base(name)
+        {
+            this.Description = description;
+        }
 
-        public int RoleLevel { set; get; }
+        [StringLength(250)]
+        public string Description { get; set; }
     }
 }

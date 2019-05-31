@@ -10,7 +10,7 @@ using CoreCMS.Infrastructure.SharedKernel;
 namespace CoreCMS.Data.Entities
 {
     [Table("Groups_Items")]
-    public class GroupItem : DomainEntity<int>,IDateTracking,ISwichtable
+    public class GroupItem : DomainEntity<int>,IDateTracking, ISwitchable
     {
 
         [Required]
@@ -18,14 +18,7 @@ namespace CoreCMS.Data.Entities
 
         [Required]
         public int ItemId { get; set; }
-
-
-        [ForeignKey("GroupId")]
-        public virtual Group Group { set; get; }
-
-
-        [ForeignKey("ItemId")]
-        public virtual Item Item { set; get; }
+      
        
         public virtual ICollection<Group> Groups { set; get; }
         public virtual ICollection<Item> Items { set; get; }

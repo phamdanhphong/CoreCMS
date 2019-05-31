@@ -1,52 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-using CoreCMS.Infrastructure.SharedKernel;
+using CoreCMS.Data.Enums;
+using CoreCMS.Data.Interfaces;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace CoreCMS.Data.Entities
 {
-    [Table("Users")]
-    public class User : DomainEntity<int>
+    [Table("AppUsers")]
+    public class AppUser : IdentityUser<Guid>, IDateTracking, ISwitchable
     {
-        public int RoleId { get; set; }
-        [Required]
-        [StringLength(100)]
-        public string UserName { get; set; }
+        public AppUser() { }
+        public AppUser(Guid id, string fullName, string userName,
+            string email, string phoneNumber, string avatar, Status status)
+        {
+            Id = id;
+            FullName = fullName;
+            UserName = userName;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            Avatar = avatar;
+            Status = status;
+        }
+        public string FullName { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string UserPassword { get; set; }
+        public DateTime? BirthDay { set; get; }
 
-        [StringLength(100)]
-        public string UserFirstName { get; set; }
-        [StringLength(100)]
-        public string UserLastName { get; set; }
-        [StringLength(500)]
-        public string UserAddress { get; set; }
-        [StringLength(100)]
-        public string UserPhoneNumber { get; set; }
-        [StringLength(300)]
-        public string UserEmail { get; set; }
-        [StringLength(100)]
-        public string UserIdentityCard { get; set; }
-        [StringLength(500)]
-        public string UserPasswordQuestion { get; set; }
-        [StringLength(500)]
-        public string UserPasswordAnswer { get; set; }
-        public int UserIsApproved { get; set; }
-        public int UserIsLockedout { get; set; }
-        public DateTime UserLastPasswordChangedDate { get; set; }
-        public DateTime UserLastLockoutDate { get; set; }
-        public string UserComment { get; set; }
-        public string Params1 { get; set; }
-        public string Params2 { get; set; }
-        public string Params3 { get; set; }
-        public string Params4 { get; set; }
-        public string Params5 { get; set; }
-        public DateTime UserCreateDate { get; set; }
-        public DateTime UserLastLogindate { get; set; }
+        public decimal Balance { get; set; }
 
+        public string Avatar { get; set; }
+
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
+        public Status Status { get; set; }
     }
 }

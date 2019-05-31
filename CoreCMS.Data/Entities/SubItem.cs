@@ -10,7 +10,7 @@ using CoreCMS.Infrastructure.SharedKernel;
 namespace CoreCMS.Data.Entities
 {
     [Table("SubItems")]
-    public class SubItem:DomainEntity<int>,IDateTracking,ISoftable,ISwichtable,IMultiLanguage<int>
+    public class SubItem:DomainEntity<int>,IDateTracking,ISoftable, ISwitchable, IMultiLanguage<int>
     {
         [Required]
         public int ItemId { get; set; }
