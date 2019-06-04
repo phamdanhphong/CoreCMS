@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using AutoMapper;
 using CoreCMS.Application.Implementation;
 using CoreCMS.Application.Interfaces;
@@ -15,6 +16,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 
@@ -23,10 +25,13 @@ namespace CoreCMS
     public class Startup
     {
         // test git
-        public Startup(IConfiguration configuration)
+        private IHostingEnvironment _env;
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
+
 
         public IConfiguration Configuration { get; }
 
@@ -39,6 +44,11 @@ namespace CoreCMS
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            var webRoot = _env.WebRootPath;
+            services.AddSingleton<IFileProvider>(
+                new PhysicalFileProvider(
+                    Path.Combine(webRoot, "pic")));
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),

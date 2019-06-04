@@ -18,10 +18,10 @@ namespace CoreCMS.Areas.Admin.Controllers
             _signInManager = signInManager;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Logout()
