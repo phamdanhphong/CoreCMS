@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoreCMS.Infastructure\CoreCMS.Infrastructure.csproj" />
+    <ProjectReference Include="..\CoreCMS.Utilities\CoreCMS.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

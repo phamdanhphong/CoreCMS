@@ -11,7 +11,7 @@ namespace CoreCMS.Application.Interfaces
         void Update(GroupViewModel groupViewModel);
         void Delete(int id);
         List<GroupViewModel> GetAll();
-        List<GroupViewModel> GetAll(string keyword);
+        List<GroupViewModel> GetAll(string app);
         List<GroupViewModel> GetAllByParentId(int parentId);
         GroupViewModel GetById(int id);
         void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items);

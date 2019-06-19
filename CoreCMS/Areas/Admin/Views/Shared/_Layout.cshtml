@@ -20,6 +20,8 @@
     <link href="/lib/notifyjss/dist/styles/metro/notify-metro.css" rel="stylesheet" />
     <!-- Custom Theme Style -->
     <link href="/admin-side/css/custom.min.css" rel="stylesheet">
+    <link href="~/css/MyStyle.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
 </head>
 <body class="nav-md">
     <div class="container body">
@@ -162,6 +164,9 @@
     </div>
     <!-- jQuery -->
     <script src="~/admin-side/vendors/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/mustache/mustache.js"></script>
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>
     <!-- Bootstrap -->
     <script src="~/admin-side/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -194,5 +199,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="~/admin-side/js/custom.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

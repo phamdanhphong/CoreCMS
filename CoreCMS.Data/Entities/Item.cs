@@ -11,13 +11,15 @@ using CoreCMS.Infrastructure.SharedKernel;
 namespace CoreCMS.Data.Entities
 {
     [Table("Items")]
-  public  class Item:DomainEntity<int>, ISwitchable, IDateTracking,IHasSeoMetaData,ISoftable,IMultiLanguage<int>
+    public class Item : DomainEntity<int>, ISwitchable, IDateTracking, IHasSeoMetaData, ISoftable, IMultiLanguage<int>
     {
+        public Item()
+        {
 
-       
+        }
 
         [StringLength(255)]
-        public string  Name { get; set; }
+        public string Name { get; set; }
 
         [Required]
         public int GroupId { get; set; }
@@ -54,15 +56,7 @@ namespace CoreCMS.Data.Entities
         [Required]
         [DefaultValue(0)]
         public decimal SalesPrice { set; get; }
-
-
-
-
-       
-        public  virtual  Group Group { set; get; }
-
-       
-     
+      
         public string SeoPageTitle { get; set; }
         public string SeoAlias { get; set; }
         public string SeoKeywords { get; set; }
@@ -77,6 +71,8 @@ namespace CoreCMS.Data.Entities
         public int SortOrder { get; set; }
 
         public Status Status { get; set; }
-        
+        public virtual Group Group { set; get; }
+        public virtual GroupItem GroupItem { set; get; }
+        public virtual ICollection<SubItem> SubItems { set; get; }
     }
 }

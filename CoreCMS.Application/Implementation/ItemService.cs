@@ -11,6 +11,7 @@ using CoreCMS.Application.ViewModels.Item;
 using CoreCMS.Data.Entities;
 using CoreCMS.Data.Enums;
 using CoreCMS.Infrastructure.Interfaces;
+using CoreCMS.Utilities.Dtos;
 
 namespace CoreCMS.Application.Implementation
 {
@@ -117,6 +118,35 @@ namespace CoreCMS.Application.Implementation
         {
             var item = Mapper.Map<ItemViewModel, Item>(itemViewModel);
             _itemRepository.Update(item);
+        }
+
+        public PagedResult<ItemViewModel> GetAllPaging(string app, int? groupId, string keyword, int page, int pageSize)
+        {
+            var query = _itemRepository.FindAll(x => x.Status == Status.Active);
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(x => x.Name.Contains(keyword));
+            }
+
+            if (groupId.HasValue)
+            {
+                query = query.Where(x => x.GroupId == groupId.Value);
+            }
+
+            int totalRow = query.Count();
+            query = query.OrderByDescending(x => x.DateCreated).Skip((page - 1) * pageSize).Take(pageSize);
+            var data = query.ProjectTo<ItemViewModel>().ToList();
+
+            var paginationSet = new PagedResult<ItemViewModel>()
+            {
+                Results = data,
+                CurrentPage = page,
+                RowCount = totalRow,
+                PageSize = pageSize
+            };
+
+            return paginationSet;
         }
     }
 }

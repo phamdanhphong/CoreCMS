@@ -251,8 +251,6 @@ namespace CoreCMS.Data.EF.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<int?>("SubItemId");
-
                     b.Property<int>("TotalView");
 
                     b.Property<string>("Url")
@@ -263,8 +261,6 @@ namespace CoreCMS.Data.EF.Migrations
                     b.HasIndex("GroupId");
 
                     b.HasIndex("GroupItemId");
-
-                    b.HasIndex("SubItemId");
 
                     b.ToTable("Items");
                 });
@@ -617,7 +613,7 @@ namespace CoreCMS.Data.EF.Migrations
 
             modelBuilder.Entity("CoreCMS.Data.Entities.Group", b =>
                 {
-                    b.HasOne("CoreCMS.Data.Entities.GroupItem")
+                    b.HasOne("CoreCMS.Data.Entities.GroupItem", "GroupItem")
                         .WithMany("Groups")
                         .HasForeignKey("GroupItemId");
                 });
@@ -629,13 +625,9 @@ namespace CoreCMS.Data.EF.Migrations
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("CoreCMS.Data.Entities.GroupItem")
+                    b.HasOne("CoreCMS.Data.Entities.GroupItem", "GroupItem")
                         .WithMany("Items")
                         .HasForeignKey("GroupItemId");
-
-                    b.HasOne("CoreCMS.Data.Entities.SubItem")
-                        .WithMany("Items")
-                        .HasForeignKey("SubItemId");
                 });
 
             modelBuilder.Entity("CoreCMS.Data.Entities.LanguageItem", b =>
@@ -654,7 +646,7 @@ namespace CoreCMS.Data.EF.Migrations
             modelBuilder.Entity("CoreCMS.Data.Entities.SubItem", b =>
                 {
                     b.HasOne("CoreCMS.Data.Entities.Item", "Item")
-                        .WithMany()
+                        .WithMany("SubItems")
                         .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using CoreCMS.Application.ViewModels.Item;
+using CoreCMS.Utilities.Dtos;
 
 namespace CoreCMS.Application.Interfaces
 {
-    public interface IItemService 
+    public interface IItemService :IDisposable
     {
         List<ItemViewModel> GetAll();
 
@@ -31,7 +32,7 @@ namespace CoreCMS.Application.Interfaces
 
         List<ItemViewModel> GetUpsellProducts(int top);
 
-      
+        PagedResult<ItemViewModel> GetAllPaging(string app, int? groupId, string key, int page, int pageSize);
 
         bool CheckAvailability(int itemId, int size, int color);
     }

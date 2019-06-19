@@ -12,10 +12,10 @@ namespace CoreCMS.Data.Entities
     [Table("Groups")]
     public class Group : DomainEntity<int>, IHasSeoMetaData, ISwitchable, ISoftable, IDateTracking, IMultiLanguage<int>
     {
+        public Group()
+        {
 
-       
-
-       
+        }
 
         [StringLength(500)]
         public string Name { get; set; }
@@ -36,8 +36,6 @@ namespace CoreCMS.Data.Entities
 
         [StringLength(1000)]
         public string Image { get; set; }
-
-
         public string SeoPageTitle { set; get; }
         public string SeoAlias { set; get; }
         public string SeoKeywords { set; get; }
@@ -59,5 +57,6 @@ namespace CoreCMS.Data.Entities
 
         public Status Status { set; get; }
         public virtual ICollection<Item> Items { set; get; }
+        public virtual GroupItem GroupItem { set; get; }
     }
 }

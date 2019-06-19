@@ -10,9 +10,9 @@ namespace CoreCMS.Application.ViewModels.Item
 {
     public class ItemViewModel
     {
-        public int Id { get; set; }
+        public int ItemId { get; set; }
         [StringLength(255)]
-        public string Name { get; set; }
+        public string Title { get; set; }
         [Required]
         public int GroupId { get; set; }
         [Required]

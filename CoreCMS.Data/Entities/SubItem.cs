@@ -12,11 +12,16 @@ namespace CoreCMS.Data.Entities
     [Table("SubItems")]
     public class SubItem:DomainEntity<int>,IDateTracking,ISoftable, ISwitchable, IMultiLanguage<int>
     {
+        public SubItem()
+        {
+
+        }
+
         [Required]
         public int ItemId { get; set; }
 
         [ForeignKey("ItemId")]
-        public virtual Item Item { set; get; }
+        
         [StringLength(255)]
         public string Name { get; set; }
         [Required]
@@ -54,7 +59,7 @@ namespace CoreCMS.Data.Entities
         public int SortOrder { get; set; }
         public Status Status { get; set; }
 
-        public virtual ICollection<Item> Items { set; get; }
-       
+        public virtual Item Item { set; get; }
+
     }
 }

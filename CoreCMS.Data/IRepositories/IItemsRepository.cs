@@ -8,5 +8,6 @@ namespace CoreCMS.Data.IRepositories
 {
     public interface IItemsRepository : IRepository<Item, int>
     {
+
     }
 }

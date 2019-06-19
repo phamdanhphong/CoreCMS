@@ -39,13 +39,13 @@ namespace CoreCMS.Areas.Admin.Components
                 ModuleHelper.AddModule("Thêm mới danh mục", "/AddGroupsNews","fa fa-plus"),
                 ModuleHelper.AddModule("Thêm mới danh sách", "/AddItemsNews","fa fa-plus")
             };
-            sidebars.Add(ModuleHelper.AddTree("Sản phẩm", "/ItemsProduct"));
+            sidebars.Add(ModuleHelper.AddTree("Sản phẩm", "/Admin/Product/ItemsProduct"));
             sidebars.Last().TreeChild = new List<SidebarMenu>()
             {
-                ModuleHelper.AddModule("Quản lý danh mục","/GroupsProduct","fa fa-list"),
-                ModuleHelper.AddModule("Quản lý danh sách","/ItemsProduct","fa fa-list"),
-                ModuleHelper.AddModule("Thêm mới danh mục", "/AddGroupsProduct","fa fa-plus"),
-                ModuleHelper.AddModule("Thêm mới danh sách", "/AddItemsProduct","fa fa-plus")
+                ModuleHelper.AddModule("Quản lý danh mục","/Admin/Product/GroupsProduct","fa fa-list"),
+                ModuleHelper.AddModule("Quản lý danh sách","/Admin/Product/ItemsProduct","fa fa-list"),
+                ModuleHelper.AddModule("Thêm mới danh mục", "/Admin/Product/AddGroupsProduct","fa fa-plus"),
+                ModuleHelper.AddModule("Thêm mới danh sách", "/Admin/Product/AddItemsProduct","fa fa-plus")
             };
 
             //sidebars.Add(ModuleHelper.AddTree("Đối tác", "fa fa-laptop"));

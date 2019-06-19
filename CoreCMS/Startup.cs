@@ -8,6 +8,7 @@ using CoreCMS.Data.EF.Repositories;
 using CoreCMS.Data.Entities;
 using CoreCMS.Data.IRepositories;
 using CoreCMS.Helpers;
+using CoreCMS.Infrastructure.Interfaces;
 using CoreCMS.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -88,13 +89,17 @@ namespace CoreCMS
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
             services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
+            services.AddTransient<IUnitOfWork, EFUnitOfWork>();
+            services.AddTransient(typeof(IRepository<,>),typeof(EFRepository<,>));
+
             //Repositories
             services.AddTransient<IGroupRepository, GroupRepository>();
             services.AddTransient<IItemsRepository, ItemRepository>();
+            services.AddTransient<IGroupItemRepository, GroupItemRepository>();
             //Serrvices
             services.AddTransient<IGroupService, GroupService>();
             services.AddTransient<IItemService, ItemService>();
-
+            services.AddTransient<IGroupItemService, GroupItemService>();
 
             //services.AddMvc();
         }
@@ -107,6 +112,7 @@ namespace CoreCMS
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                app.UseBrowserLink();
             }
             else
             {

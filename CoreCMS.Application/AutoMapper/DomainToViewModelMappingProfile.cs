@@ -13,6 +13,7 @@ namespace CoreCMS.Application.AutoMapper
         {
             CreateMap<Group,GroupViewModel>();
             CreateMap<Item, ItemViewModel>();
+            CreateMap<GroupItem, GroupItemViewModel>();
         }
     }
 }

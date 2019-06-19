@@ -51,11 +51,11 @@ namespace CoreCMS.Application.Implementation
             return  _groupRepository.FindAll().OrderBy(x=>x.ParentId).ProjectTo<GroupViewModel>().ToList();
         }
 
-        public List<GroupViewModel> GetAll(string keyword)
+        public List<GroupViewModel> GetAll(string app)
         {
-            if (!string.IsNullOrEmpty(keyword))
+            if (!string.IsNullOrEmpty(app))
             {
-                return _groupRepository.FindAll(x => x.Name.Contains(keyword) || x.Description.Contains(keyword)).OrderBy(x => x.ParentId).ProjectTo<GroupViewModel>().ToList();
+                return _groupRepository.FindAll(x => x.App.Contains(app)).OrderBy(x => x.ParentId).ProjectTo<GroupViewModel>().ToList();
             }
             else
             {

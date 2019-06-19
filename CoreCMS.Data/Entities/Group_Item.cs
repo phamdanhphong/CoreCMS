@@ -12,6 +12,10 @@ namespace CoreCMS.Data.Entities
     [Table("Groups_Items")]
     public class GroupItem : DomainEntity<int>,IDateTracking, ISwitchable
     {
+        public GroupItem()
+        {
+
+        }
 
         [Required]
         public int GroupId { get; set; }
